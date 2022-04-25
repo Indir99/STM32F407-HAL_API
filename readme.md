@@ -1,16 +1,21 @@
-Oprema:
+## STM32F407 - HAL API project
 
-1. STM32F407VG
-2. Dodatno napajanje: baterija 9 [V]
-3. senzor nivoa (4x) // korištena 2
-4. motor SG90 (2x)
+Design of microprocessor systems / Faculty of Electrical Engineering (University in Tuzla)
+
+## Specification
+
+### Equipment:
+
+1. STM32F407VG Discovery borad
+2. Battery -> 9 [V]
+3. Water lelvel sensors (2x or 4x)
+4. Servo motor SG90 (2x) -> for valve simulation
 5. DC motor
-6. Relej
-7. Potenciometar 10k (2x)
+6. relay (better transistor control)
+7. Potentiometer 10k (2x)
 8. LCD 1602
 
-Funkcionalnost:
-Sistem se sastoji iz dva rezervoara i posude za miješanje tečnosti. Prvo ćemo provjeriti da li u rezervoarima ima tečnosti, ako ima, ući ćemo u while petlju, a ako nema, kod se neće dalje izvršavati (ovaj dio programa trenutno nije realizovan). Kada smo ustanovili da u rezervoarima imamo tečnost, prvo će se otvoriti prvi ventil (pokreće se prvi servo motor) dok drugi ventil ostaje
-zatvoren. Kada voda u posudi za miješanje dostigne prvi nivo (promijeni se prvi flag), zatvara se prvi ventil (vraćamo prvi servo motor u početni položaj) a drugi ventil se otvara (pokrećemo drugi servo motor). Sada ćemo sačekati da voda u posudi dosegne drugi nivo. Kada voda dostigne drugi nivo (promijeni se drugi flag) dolazi do zatvaranja drugog ventila. Sada u posudi imamo dovoljno
-tečnosti i moguće je miješanje. Za pokretanje je korišten DC motor. Pritiskom na taster koji se nalazi na ploči okida relej i pokreće motor koji je spojen na eksterno napajanje (baterija od 9 V). Motor je pokrenut dok držimo taster. Kada pustimo taster
-motor prestaje sa kretanjem, tj. mješanje se obustavlja.
+### Functionality
+
+The system consists of two tanks and a bowl for mixing liquids. First, we will check if there is liquid in the tanks, if there is liquid, we will enter the while loop, and if there is not, the code will not be executed (this part of the program is not currently implemented). When we find that we have liquid in the tanks, the first valve will open (the first servo motor starts) while the second valve remains closed. When the water in the mixing bowl reaches the first level (the first flag is changed), the first valve closes (we return the first servo motor to the initial position) and the second valve opens (we start the second servo motor). We will now wait for the water in the bowl to reach the second level. When the water reaches the second level (the second flag changes) the second valve closes. Now we have enough liquid in the bowl and mixing is possible. Pressing the button on the board triggers the relay and starts the motor connected to external power (9 V battery). The DC motor is running while we hold the button. When we release the button
+the DC motor stops moving, ie. mixing is stopped.
